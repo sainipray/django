@@ -584,12 +584,11 @@ class BasicExtractorTests(ExtractorTests):
             'msgstr ""\n'
         )
         with tempfile.NamedTemporaryFile() as pot_file:
-            pot_filename = pot_file.name
+            pot_filename = Path(pot_file.name)
         write_pot_file(pot_filename, msgs)
-        with open(pot_filename, encoding="utf-8") as fp:
-            pot_contents = fp.read()
-            self.assertIn("Content-Type: text/plain; charset=UTF-8", pot_contents)
-            self.assertIn("mañana; charset=CHARSET", pot_contents)
+        pot_contents = pot_filename.read_text(encoding="utf-8")
+        self.assertIn("Content-Type: text/plain; charset=UTF-8", pot_contents)
+        self.assertIn("mañana; charset=CHARSET", pot_contents)
 
 
 class JavaScriptExtractorTests(ExtractorTests):
