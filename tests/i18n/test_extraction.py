@@ -514,14 +514,14 @@ class BasicExtractorTests(ExtractorTests):
         cmd.default_locale_path = os.path.join(self.test_dir, "locale")
         found_files = cmd.find_files(self.test_dir)
         self.assertGreater(len(found_files), 1)
-        found_exts = {os.path.splitext(tfile.file)[1] for tfile in found_files}
+        found_exts = {os.path.splitext(tfile.path)[1] for tfile in found_files}
         self.assertEqual(found_exts.difference({".py", ".html", ".txt"}), set())
 
         cmd.extensions = [".js"]
         cmd.domain = "djangojs"
         found_files = cmd.find_files(self.test_dir)
         self.assertGreater(len(found_files), 1)
-        found_exts = {os.path.splitext(tfile.file)[1] for tfile in found_files}
+        found_exts = {os.path.splitext(tfile.path)[1] for tfile in found_files}
         self.assertEqual(found_exts.difference({".js"}), set())
 
     @mock.patch("django.core.management.commands.makemessages.popen_wrapper")
