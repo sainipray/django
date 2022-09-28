@@ -48,6 +48,9 @@ Minor features
   :attr:`~django.contrib.admin.ModelAdmin.filter_vertical` widgets are now
   filterable.
 
+* The ``admin/base.html`` template now has a new block ``nav-breadcrumbs``
+  which contains the navigation landmark and the ``breadcrumbs`` block.
+
 :mod:`django.contrib.admindocs`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -271,7 +274,8 @@ Utilities
 Validators
 ~~~~~~~~~~
 
-* ...
+* The list of common passwords used by ``CommonPasswordValidator`` is updated
+  to the most recent version.
 
 .. _backwards-incompatible-4.2:
 
@@ -315,6 +319,12 @@ Miscellaneous
 
 * :ttag:`{% blocktranslate asvar … %}<blocktranslate>` result is now marked as
   safe for (HTML) output purposes.
+
+* The ``autofocus`` HTML attribute in the admin search box is removed as it can
+  be confusing for screen readers.
+
+* The :option:`makemigrations --check` option no longer creates missing
+  migration files.
 
 .. _deprecated-features-4.2:
 
